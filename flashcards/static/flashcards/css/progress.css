@@ -1,0 +1,95 @@
+/* mobile */
+.collapsible {
+  background-color: #513e5c;
+  color: #c7aabc;
+  cursor: pointer;
+  padding: 20px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+}
+
+.active,
+.collapsible:hover {
+  background-color: #745582;
+  color: #f8f8f5;
+  font-weight: bold;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: #c7aabc;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: '\2212';
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f8f8f5;
+}
+
+.content p {
+  padding: 15px 0 0 15px;
+}
+
+svg {
+    margin-bottom: 30px;
+}
+
+#categories-chart {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.stack-progress-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.stack-progress-visualization {
+  width: 320px;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 72px;
+    height: 30px;
+    padding: 2px;
+    font: 10px sans-serif;
+    background: black;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+@media only screen and (min-device-width : 450px) and (max-device-width : 767px) {
+  .stack-progress-visualization {
+    width: 430px;
+  }
+}
+
+/* iPads */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  .stack-progress-visualization {
+    width: 500px;
+  }
+}
+
+/* large desktops */
+@media only screen and (min-width : 1224px) {
+  .stack-progress-viz {
+    width: 700px;
+  }
+}

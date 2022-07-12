@@ -1,0 +1,34 @@
+{% extends "flashcards/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+
+<h3>Category: {{ stack.category }}</h3>
+<h1>{{ stack.title }}</h1>
+
+<button type="button" class="btn btn-block start-practice" data-id={{stack.id}}>Start Practice</button>
+
+<div class="practice-area hidden">
+  <div class="flashcard-to-practice">
+    <form>
+      <div class="question-number"></div>
+      <div class="form-group">
+        <div class="flashcard-question"></div>
+        <input type="text" class="form-control" id="answer" placeholder="Answer">
+      </div>
+      <div class="next-btn-wrapper">
+        <button type="submit" class="btn btn-primary next-button">Next</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="results-table hidden">
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'flashcards/js/practice.js' %}"></script>
+{% endblock %}

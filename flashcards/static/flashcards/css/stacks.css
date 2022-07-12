@@ -1,0 +1,256 @@
+/* mobile */
+
+.user-stack {
+  margin: 2%;
+  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stack-header-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-title-icon {
+  margin-left: 10px;
+}
+
+.edit-title-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.title-edit-area {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.stack-title a {
+  color: #02334a;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.stack-title a:hover {
+  color: #01839d;
+}
+
+.stack-category,
+.stack-created,
+.stack-saved {
+  font-size: 0.8em;
+}
+
+.user-stack-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-stack-buttons button {
+  width: 68px;
+  padding: 0px;
+}
+
+.user-stack-buttons button.share-stack {
+  margin-left: 5px;
+}
+
+.user-stack-buttons button.archive-stack {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.user-stack-buttons button.move-from-archive {
+  margin-right: 5px;
+}
+
+#create-stack-form,
+#add-new-flashcard-form,
+#csv-file-form {
+  width: 96%;
+  margin: 10px 2% 10px 2%;
+}
+
+.add-new-flashcard {
+  display: none;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 1px black solid;
+}
+
+.create-flashcard-btn-div,
+.edit-flashcard-btn-div,
+.save-flashcard-btn-div,
+.create-stack-btn-div,
+.edit-title-btn-div {
+  display: flex;
+  justify-content: center;
+}
+
+.create-flashcard-btn-div {
+  padding: 0 20px 20px 20px;
+}
+
+.edit-flashcard-btn-div,
+.save-flashcard-btn-div,
+.edit-title-btn-div {
+  margin-bottom: 10px;
+}
+
+.question-in-stack {
+  justify-content: center;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.answer-info,
+.question-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-left: 2%;
+}
+
+.answer-label,
+.question-label {
+  width: 100px;
+}
+
+.edited-answer,
+.edited-question {
+  width: 100%;
+}
+
+.close-icon {
+  padding: 10px 10px 0 0;
+}
+
+.delete-icon {
+  padding: 5px 5px 0 0;
+}
+
+.delete-icon:hover {
+  color: #513e5c;
+  cursor: pointer;
+}
+
+.delete-icon,
+.close-icon,
+.close-edit-area-icon,
+.close-create-flashcard-icon,
+.close-create-stack-icon {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.create-flashcard-btn,
+.edit-flashcard-btn,
+.save-flashcard-btn,
+.edit-title-btn {
+  margin-top: 20px;
+  width: 150px;
+}
+
+textarea {
+  width: 90%;
+}
+
+.stack-title-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-from-file-btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.title-error,
+.category-error {
+  color: red;
+}
+
+.user-stack-buttons>div {
+  margin-left: 20px;
+}
+
+.csv-file-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.add-csv-btn-wrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.all-stacks>div,
+.all-user-stacks>div,
+.all-saved-stacks>div,
+.all-archived-stacks>div {
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.all-stacks>div.user-stack:nth-child(odd),
+.all-user-stacks>div.user-stack:nth-child(odd),
+.all-saved-stacks>div.user-stack:nth-child(odd),
+.all-archived-stacks>div.user-stack:nth-child(odd),
+.question-list>div.question-in-stack:nth-child(odd) {
+  background-color: #deefed;
+}
+
+.all-stacks>div.user-stack:nth-child(even),
+.all-user-stacks>div.user-stack:nth-child(even),
+.all-saved-stacks>div.user-stack:nth-child(even),
+.all-archived-stacks>div.user-stack:nth-child(even),
+.question-list>div.question-in-stack:nth-child(even) {
+  background-color: #e0e5e6;
+}
+
+/* medium screens */
+@media only screen and (min-device-width : 641px) and (max-device-width: 1007px) {
+  .user-stack {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .user-stack-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .user-stack-buttons button {
+    width: 80px;
+  }
+}
+
+/* large screens */
+@media only screen and (min-device-width : 1008px) {
+  .user-stack {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .user-stack-buttons button {
+    width: 100px;
+    font-size: 0.9em;
+  }
+}

@@ -1,0 +1,75 @@
+{% extends "flashcards/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+
+<h1>All Stacks</h1>
+
+<div class="all-stacks">
+  {% if page_stacks %}
+  {% for stack in page_stacks %}
+  <div class="user-stack" data-id={{stack.id}}>
+
+    <div class="stack-info">
+      <div class="stack-title"><a href="{% url 'stack' stack.id %}">{{ stack.title }}</a></div>
+      <div class="stack-category">Category: {{ stack.category.title }}</div>
+      <div class="stack-created">Created {{ stack.timestamp }} by {{ stack.created_by.username }}</div>
+    </div>
+
+    {% if user.is_authenticated %}
+    {% if user.id != stack.user.id %}
+    <div class="user-stack-buttons">
+      <button type="button" class="btn btn-outline-primary save-stack-btn">Save</button>
+    </div>
+    {% endif %}
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="no-stacks">
+  <p> There are no stacks yet.</p>
+</div>
+{% endif %}
+
+<!-- Pagination bar -->
+{% if show_pagination %}
+<nav class="pagination" aria-label="Pagination">
+  <ul class="pagination pg-purple">
+
+    {% if page_stacks.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ page_stacks.previous_page_number }}">&laquo</a>
+    </li>
+    {% endif %}
+
+    {% for page in page_stacks.paginator.page_range %}
+    {% if page == page_stacks.number %}
+    <li class="page-item active">
+      <span class="page-link">{{ page }}</span>
+      <span class="sr-only">(current)</span>
+    </li>
+    {% elif page > page_stacks.number|add:'-3' and page < page_stacks.number|add:'3' %} <li class="page-item">
+      <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+      </li>
+      {% endif %}
+      {% endfor %}
+
+      {% if page_stacks.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_stacks.paginator.num_pages }}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+      {% endif %}
+  </ul>
+
+</nav>
+{% endif %}
+
+{% endblock %}
+
+{% block script %}
+<script type="module" src="{% static 'flashcards/js/all-stacks.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "flashcards/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+
+<h1>My Progress</h1>
+
+{% if user_has_practiced %}
+<div id="categories-chart"></div>
+{% else %}
+<div class="no-practice">
+  You havent's practiced yet.
+</div>
+{% endif %}
+
+<!-- Show only stacks with attempts -->
+{% for stack in stacks %}
+{% if stack.attempts_total > 0 %}
+
+<button type="button" class="collapsible" data-id={{stack.id}}>{{ stack.title }}</button>
+
+<div class="content">
+  <p>Total number of attempts: {{ stack.attempts_total }}</p>
+  <p>Average time spent: {{ stack.avg_time }}</p>
+  <p>Average % of correct answers: {{ stack.correct }}</p>
+  <div class="stack-progress-wrapper">
+    <div class="stack-progress-visualization" svg-data-id="{{stack.id}}"></div>
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+
+{% endblock %}
+
+{% block script %}
+<script type="module" src="{% static 'flashcards/js/progress.js' %}"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "flashcards/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+
+<h1> All Categories</h1>
+
+{% if categories %}
+<div class="categories-container">
+  {% for category in categories|dictsort:'title' %}
+  <a href="{% url 'category' category.id %}">
+    <div class="category">{{ category }}</div>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<div class="no-categories">
+  <p> There are no categories yet</p>
+</div>
+{% endif %}
+
+{% endblock %}
