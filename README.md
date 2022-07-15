@@ -11,6 +11,9 @@ This project is built as capstone for [CS50's Web Programming with Python and Ja
 * To utilize Django (including at least one model) on the back-end
 * To utilize JavaScript on the front-end
 * To be mobile-responsive
+
+Verify the deployment on an [Amazon EC2](https://aws.amazon.com/pm/ec2/?trk=36c6da98-7b20-48fa-8225-4784bced9843&sc_channel=ps&sc_campaign=acquisition&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|Compute|EC2|US|EN|Text&s_kwcid=AL!4422!3!467723097970!e!!g!!amazon%20ec2&ef_id=CjwKCAjwoMSWBhAdEiwAVJ2ndpvWqiV2joPkKLlSlkk8fncn_1dQgN7BBFv4JGrMf2U25AHej3CPqxoCnoUQAvD_BwE:G:s&s_kwcid=AL!4422!3!467723097970!e!!g!!amazon%20ec2) instance with [Gunicorn](https://gunicorn.org/) and [Nginx](https://www.nginx.com/) [here](http://54.191.208.167/).
+
 ## Features
 The ***Flashcards*** app allows users to:
 * Create stacks and populate them with flashcards:
