@@ -103,5 +103,50 @@ The repo contains test database. To reset database,
 ```sh
 $ python manage.py flush
 ```
+
+## Deployment
+The ***Flashcards*** app is deployed on an [Amazon EC2](https://aws.amazon.com/pm/ec2/?trk=36c6da98-7b20-48fa-8225-4784bced9843&sc_channel=ps&sc_campaign=acquisition&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|Compute|EC2|US|EN|Text&s_kwcid=AL!4422!3!467723097970!e!!g!!amazon%20ec2&ef_id=CjwKCAjwoMSWBhAdEiwAVJ2ndpvWqiV2joPkKLlSlkk8fncn_1dQgN7BBFv4JGrMf2U25AHej3CPqxoCnoUQAvD_BwE:G:s&s_kwcid=AL!4422!3!467723097970!e!!g!!amazon%20ec2) instance with [Gunicorn](https://gunicorn.org/), [Nginx](https://www.nginx.com/), and [Supervisor](http://supervisord.org/). Verify the deployment [here](http://54.191.208.167/).
+
+Amazon EC2 instance has the following characteristics:
+* Platform: Ubuntu 20.04.4
+* Public IPv4 address: ```54.191.208.167```
+
+### Gunicorn Configuration
+Gunicorn configuration is stored in ```/etc/supervisor/conf.d/gunicorn.conf``` file.
+```
+[program:gunicorn]
+directory = /home/ubuntu/deploy-flashcards
+command = /home/ubuntu/env/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/de>
+autostart = true
+autorestart = true
+stderr_logfile = /var/log/gunicorn/gunicorn.err.log
+stdout_logfile = /var/log/gunicorn/gunicorn.out.log
+
+[group:guni]
+programs:gunicorn
+```
+
+### Nginx Server Configuration
+Nginx server configuration is stored in ```/etc/nginx/sites-available/default``` file.
+```
+# Default server configuration
+
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        server_name 54.191.208.167;
+
+        location / {
+                include proxy_params;
+                proxy_pass http://unix:/home/ubuntu/deploy-flashcards/app.sock;
+        }
+        
+        # Serving static content
+        location /static/ {
+                autoindex on;
+                alias /home/ubuntu/deploy-flashcards/flashcards/static/;
+        }
+```
+
 ## Authors
 Alexandra Baturina
